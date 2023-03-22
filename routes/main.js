@@ -10,4 +10,22 @@ router.get('/', (req, res) => {
     );
 });
 
+router.get('/sendMessage', (req, res) => {
+    res.render(
+        `${process.cwd()}/views/modes/send.pug`,
+        {
+            title: 'Send Message',
+        }
+    );
+});
+
+router.get('/replyToMessage', (req, res) => {
+    res.render(
+        `${process.cwd()}/views/modes/reply.pug`,
+        {
+            title: 'Reply To Message',
+        }
+    );
+});
+
 module.exports = router;

@@ -4,19 +4,11 @@ html(lang="en")
     title= title
     link(rel='stylesheet' href='/cdn/css/index.css')
   body
-    h1 Hello World!
-    form(action='/api/sendMessage' method='post')
-      input(type="hidden" name="formName" value="sendMessage")
-      label(for="token") Discord Bot Token:
-        br
-        input#token(type="password", name="token" required='')
-      label(for="serverID") Server ID:
-        br
-        input#serverID(type='text' name='serverID' required='' pattern='[0-9]{18,}')
-      label(for="channelID") Channel ID:
-        br
-        input#channelID(type='text' name='channelID' required='' pattern='[0-9]{18,}')
-      label(for="message") Message:
-        br
-        input#message(type='text' name='message' required='')
-      input#submit(type='submit' value='Send Message')
+    h1 Discord Message Sender
+    h2 Select a mode:
+    ul
+      li
+        a(href='/sendMessage') Send
+      li
+        a(href='/replyToMessage') Reply
+  

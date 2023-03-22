@@ -16,7 +16,7 @@ html {
 }
 
 body {
-    align-items: center;
+    display: grid;
 }
 
 form {
@@ -28,6 +28,7 @@ form {
     border-radius: 5px;
     padding: 10px;
     background: #f1f1f1;
+    height: max-content;
 }
 
 form > label, form > input[type="submit"] {
@@ -42,8 +43,4 @@ input:not(#submit) {
 #submit {
     display: flex;
     align-self: center;
-}
-
-#token {
-    width: 384px;
 }
