@@ -24,13 +24,13 @@ router.post('/ban', (req, res) => {
 });
 
 router.post('/mute', (req, res) => {
-    const { serverID, userID, reason, length, token } = req.body;
+    const { serverID, userID, reason, until:length, token } = req.body;
     rest.setToken(token);
     rest.patch(
         DiscordApi.Routes.guildMember(serverID, userID),
         {
             body: {
-                communication_disabled_until: length
+                communication_disabled_until: length,
             },
             headers: {
                 'X-Audit-Log-Reason': reason
