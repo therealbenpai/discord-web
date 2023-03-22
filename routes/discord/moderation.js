@@ -3,6 +3,7 @@ const router = express.Router();
 const { REST } = require('@discordjs/rest');
 const rest = new REST({ version: '10' })
 const DiscordApi = require('discord-api-types/v10');
+const errorHandling = require('../../functions/discordErrorCode');
 
 // routes for ban, mute, and kick
 router.post('/ban', (req, res) => {
@@ -18,12 +19,8 @@ router.post('/ban', (req, res) => {
                 'X-Audit-Log-Reason': reason
             }
         }
-    ).then(() => {
-        // console.log('Banned user');
-    }).catch(err => {
-        console.error(err);
-    });
-    res.redirect('/banUser');
+    )
+    .then(() => res.redirect('/banUser'), err => errorHandling(err, res, '/banUser'));
 });
 
 router.post('/mute', (req, res) => {
@@ -39,12 +36,8 @@ router.post('/mute', (req, res) => {
                 'X-Audit-Log-Reason': reason
             }
         }
-    ).then(() => {
-        // console.log('Muted user');
-    }).catch(err => {
-        console.error(err);
-    });
-    res.redirect('/muteUser');
+    )
+    .then(_ => res.redirect('/muteUser'), err => errorHandling(err, res, '/muteUser'))
 });
 
 router.post('/kick', (req, res) => {
@@ -57,12 +50,8 @@ router.post('/kick', (req, res) => {
                 'X-Audit-Log-Reason': reason
             }
         }
-    ).then(() => {
-        // console.log('Kicked user');
-    }).catch(err => {
-        console.error(err);
-    });
-    res.redirect('/kickUser');
+    )
+    .then(_ => res.redirect('/kickUser'), err => errorHandling(err, res, '/kickUser'))
 });
 
 module.exports = router;
