@@ -12,6 +12,12 @@ html(lang="en")
       label(for="serverID") Server ID:
         br
         input#serverID(type='text' name='serverID' required='' pattern='[0-9]{18,}')
+      label(for="userID") User ID:
+        br
+        input#userID(type='text' name='userID' required='' pattern='[0-9]{18,}')
+      label(for="until") Until:
+        br
+        input#until(type='datetime-local' name='until' required='')
       label(for="reason") Reason:
         br
         input#reason(type='text' name='reason' required='')

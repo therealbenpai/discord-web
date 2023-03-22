@@ -44,3 +44,7 @@ input:not(#submit) {
     display: flex;
     align-self: center;
 }
+
+#token {
+    width: 384px;
+}

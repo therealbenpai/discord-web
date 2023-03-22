@@ -28,4 +28,42 @@ router.get('/replyToMessage', (req, res) => {
     );
 });
 
+router.get('/dmUser', (req, res) => {
+    res.render(
+        `${process.cwd()}/views/modes/dm.pug`,
+        {
+            title: 'Direct Message User',
+        }
+    );
+});
+
+// make routes for muting, banning, and kicking
+
+router.get('/muteUser', (req, res) => {
+    res.render(
+        `${process.cwd()}/views/modes/mute.pug`,
+        {
+            title: 'Mute User',
+        }
+    );
+});
+
+router.get('/banUser', (req, res) => {
+    res.render(
+        `${process.cwd()}/views/modes/ban.pug`,
+        {
+            title: 'Ban User',
+        }
+    );
+});
+
+router.get('/kickUser', (req, res) => {
+    res.render(
+        `${process.cwd()}/views/modes/kick.pug`,
+        {
+            title: 'Kick User',
+        }
+    );
+});
+
 module.exports = router;
