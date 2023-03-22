@@ -64,9 +64,15 @@ app.use((req, res, next) => {
     );
 })
 
-https.createServer({
-    key: fs.readFileSync(`${process.cwd()}/assets/certs/server.key`),
-    cert: fs.readFileSync(`${process.cwd()}/assets/certs/server.cert`)
-}, app).listen(443, () => {
-    console.log('Listening on port 443');
-});
+if (process.platform === 'win32') {
+    https.createServer({
+        key: fs.readFileSync(`${process.cwd()}/assets/certs/server.key`),
+        cert: fs.readFileSync(`${process.cwd()}/assets/certs/server.cert`)
+    }, app).listen(443, () => {
+        console.log('Listening on port 443');
+    });
+} else {
+    app.listen(3001, () => {
+        console.log('Listening on port 3001');
+    });
+}
